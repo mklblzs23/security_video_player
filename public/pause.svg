@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" style="width:100%;height:100%;transform:translate3d(0,0,0);content-visibility:visible" viewBox="0 0 500 500">
+  <defs>
+    <clipPath id="a">
+      <path d="M0 0h500v500H0z"/>
+    </clipPath>
+    <clipPath id="e">
+      <path d="M0 0h500v500H0z"/>
+    </clipPath>
+    <clipPath id="d">
+      <path d="M0 0h500v500H0z"/>
+    </clipPath>
+    <clipPath id="c">
+      <path d="M0 0h500v500H0z"/>
+    </clipPath>
+    <clipPath id="b">
+      <path d="M0 0h500v500H0z"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#a)">
+    <g clip-path="url(#b)" style="display:none">
+      <g class="primary design" style="display:none">
+        <path class="primary" fill="#ffffff"/>
+      </g>
+      <g class="primary design" style="display:none">
+        <path class="primary" fill="#ffffff"/>
+      </g>
+      <g class="primary design" style="display:none">
+        <path class="primary" fill="#ffffff"/>
+      </g>
+      <g class="primary design" style="display:none">
+        <path fill="none" class="primary"/>
+      </g>
+      <g class="primary design" style="display:none">
+        <path fill="none" class="primary"/>
+      </g>
+    </g>
+    <g clip-path="url(#c)" style="display:none">
+      <g class="primary design" style="display:none">
+        <path class="primary" fill="#ffffff"/>
+      </g>
+      <g class="primary design" style="display:none">
+        <path class="primary" fill="#ffffff"/>
+      </g>
+      <g class="primary design" style="display:none">
+        <path class="primary" fill="#ffffff"/>
+      </g>
+      <g class="primary design" style="display:none">
+        <path fill="none" class="primary"/>
+      </g>
+      <g class="primary design" style="display:none">
+        <path fill="none" class="primary"/>
+      </g>
+    </g>
+    <g clip-path="url(#d)" style="display:block">
+      <g class="primary design" style="display:block">
+        <path fill="#ffffff" d="M190.088 417.34h-46.27c-21.391 0-38.785-16.662-38.785-37.154V121.162c0-20.492 17.394-37.154 38.785-37.154h46.27c21.391 0 38.785 16.662 38.785 37.154v259.024c0 20.492-17.394 37.154-38.785 37.154zm-46.27-302.198c-4.038 0-7.463 2.757-7.463 6.02v259.024c0 3.263 3.425 6.02 7.463 6.02h46.27c4.038 0 7.463-2.757 7.463-6.02V121.162c0-3.263-3.425-6.02-7.463-6.02h-46.27z"/>
+      </g>
+      <g class="primary design" style="display:block">
+        <path fill="#ffffff" d="M357.75 417.34h-46.534c-21.473 0-38.949-16.662-38.949-37.154V121.162c0-20.492 17.476-37.154 38.949-37.154h46.534c21.473 0 38.949 16.662 38.949 37.154v259.024c0 20.492-17.476 37.154-38.949 37.154zm-46.534-302.198c-4.058 0-7.627 2.817-7.627 6.02v259.024c0 3.203 3.569 6.02 7.627 6.02h46.534c4.058 0 7.627-2.817 7.627-6.02V121.162c0-3.203-3.569-6.02-7.627-6.02h-46.534z"/>
+      </g>
+    </g>
+    <g clip-path="url(#e)" style="display:none">
+      <g class="primary design" style="display:none">
+        <path class="primary" fill="#ffffff"/>
+      </g>
+      <g class="primary design" style="display:none">
+        <path class="primary" fill="#ffffff"/>
+      </g>
+    </g>
+  </g>
+</svg>
