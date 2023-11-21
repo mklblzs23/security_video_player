@@ -15,8 +15,8 @@ type ShapeData = {
 };
 
 type VideoPlayerProps = {
-  video: string;
-  shapeData: ShapeData;
+  video: string | undefined;
+  shapeData: ShapeData | undefined;
   className?: string;
 };
 
@@ -28,6 +28,40 @@ function VideoPlayer(props: VideoPlayerProps) {
   const controllersRef = useRef<HTMLDivElement | null>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const formattedTime = formatTime(currentTime);
+  const [showComponent, setShowComponent] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowComponent(true);
+    }, 700); 
+
+    return () => clearTimeout(timer);
+  }, []);
+  
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas || !shapeData) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const shapes = shapeData[formattedTime] || [];
+
+    const originalVideoWidth = videoRef.current?.videoWidth || 1;
+    const originalVideoHeight = videoRef.current?.videoHeight || 1;
+    const displayedVideoWidth = videoRef.current?.offsetWidth || 1;
+    const displayedVideoHeight = videoRef.current?.offsetHeight || 1;
+
+    const xRatio = displayedVideoWidth / originalVideoWidth;
+    const yRatio = displayedVideoHeight / originalVideoHeight;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    shapes.forEach((shape) => {
+      ctx.strokeStyle = shape.class === 'PERSON' ? 'orange' : 'cyan';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(shape.x * xRatio, shape.y * yRatio, shape.w * xRatio, shape.h * xRatio);
+    });
+  }, [formattedTime, shapeData]);
 
   const handleTimeUpdate = (event: React.SyntheticEvent<HTMLVideoElement>) => {
     const currentTime = event.currentTarget.currentTime;
@@ -58,33 +92,14 @@ function VideoPlayer(props: VideoPlayerProps) {
     setCurrentTime(+value);
   };
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || !shapeData) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const shapes = shapeData[formattedTime] || [];
-
-    const originalVideoWidth = videoRef.current?.videoWidth || 1;
-    const originalVideoHeight = videoRef.current?.videoHeight || 1;
-    const displayedVideoWidth = videoRef.current?.offsetWidth || 1;
-    const displayedVideoHeight = videoRef.current?.offsetHeight || 1;
-
-    const xRatio = displayedVideoWidth / originalVideoWidth;
-    const yRatio = displayedVideoHeight / originalVideoHeight;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    shapes.forEach((shape) => {
-      ctx.strokeStyle = shape.class === 'PERSON' ? 'orange' : 'cyan';
-      ctx.lineWidth = 1;
-      ctx.strokeRect(shape.x * xRatio, shape.y * yRatio, shape.w * xRatio, shape.h * xRatio);
-    });
-  }, [formattedTime, shapeData]);
+  if (!showComponent) {
+    return (
+      <span className="text-3xl">Loading...</span>
+    );
+  }
 
   return (
-    <div className={`relative flex bg-black justify-center ${className}`}>
+    <div className={`relative flex bg-black justify-center border border-solid rounded-3xl p-4 ${className}`}>
       <video
         ref={videoRef}
         onTimeUpdate={handleTimeUpdate}
@@ -98,7 +113,7 @@ function VideoPlayer(props: VideoPlayerProps) {
         width={videoRef.current?.offsetWidth || 0}
         height={videoRef.current?.offsetHeight || 0}
       />
-      <div className="absolute bottom-0 left-0 w-full bg-opacity-50 bg-sky-800 p-4 flex justify-between" ref={controllersRef}>
+      <div className="absolute border-b rounded-b-3xl bottom-0 left-0 w-full bg-opacity-20 bg-gray-200  p-4 flex justify-between" ref={controllersRef}>
         <button onClick={togglePlayPause} className="bg-transparent p-0 mr-6">
           <img
             src={isPlaying ? "/pause.svg" : "/play.svg"}
