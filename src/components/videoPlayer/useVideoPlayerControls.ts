@@ -43,6 +43,7 @@ export default function useVideoPlayerControls(props: PropsType) {
   const handleTimeUpdate = (event: React.SyntheticEvent<HTMLVideoElement>) => {
     const currentTime = event.currentTarget.currentTime;
     setCurrentTime(roundToNearestInterval(currentTime, 0.2));
+    if (videoRef.current && currentTime && currentTime == videoRef.current.duration) setIsPlaying(false);
   };
 
   const roundToNearestInterval = (value: number, interval: number): number => {
