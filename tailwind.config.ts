@@ -9,6 +9,9 @@ const config: Config = {
       height: {
         '60vh': '60vh',
       },
+      minWidth: {
+        '820': '820px',
+      },
       padding: {
         '10-20': '10% 20%',
       }
